@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+
+    int n;
+    int n_2 = 0, n_1 = 1;
+    int sum = 2;
+
+    printf("Enter n: ");
+    scanf("%d", &n);
+
+    if (n <= 1) {
+        printf("n value must be greater than 1.");
+    } else {
+        for (int i = 2; i <= n; i++) {
+            int suan = n_1 + n_2;
+            sum += suan;
+            n_2 = n_1;
+            n_1 = suan;
+
+        }
+        sum = sum-1;
+        printf("Sum of Fibonacci numbers up to F_%d: %d", n, sum);
+    }
+
+    return 0;
+}
