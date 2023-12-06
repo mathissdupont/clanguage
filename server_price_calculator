@@ -1,0 +1,55 @@
+#include <stdio.h>
+
+int main() {
+    int st_h, st_m, en_h, en_m, server_type;
+    float cos_per_min;
+
+    while (1) {
+        printf("Enter start hour (between 0 and 23) (-1 to terminate): ");
+        scanf("%d", &st_h);
+
+        if (st_h == -1) {
+            break;
+        }
+
+        printf("Enter start minute (between 0 and 59): ");
+        scanf("%d", &st_m);
+
+        printf("Enter end hour (between 0 and 23): ");
+        scanf("%d", &en_h);
+
+        printf("Enter end minute (between 0 and 59): ");
+        scanf("%d", &en_m);
+
+        printf("Enter server type (0, 1, or 2): ");
+        scanf("%d", &server_type);
+
+        if (st_h > en_h || (st_h == en_h && st_m >= en_m)) {
+            en_h += 24;
+        }
+
+        int total_minutes = (en_h - st_h) * 60 + (en_m - st_m);
+
+        switch (server_type) {
+            case 0:
+                cos_per_min = 10.5;
+                break;
+            case 1:
+                cos_per_min = 12.0;
+                break;
+            case 2:
+                cos_per_min = 15.75;
+                break;
+            default:
+                printf("Invalid server type. Please enter 0, 1, or 2.\n");
+                continue;
+        }
+
+        float total_cost = cos_per_min * total_minutes;
+
+        printf("Service duration: %d minutes\n", total_minutes);
+        printf("Price: $%.2f\n", total_cost);
+    }
+
+    return 0;
+}
