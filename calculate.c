@@ -35,4 +35,3 @@ int main()
     printf("y=%d",y);
 return 0;
 }
-//Paste your C codes of the solution for calculate formula part (part-2) of HW1.
